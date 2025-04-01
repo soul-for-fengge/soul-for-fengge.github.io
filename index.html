@@ -52,7 +52,12 @@
     <p><strong>老公的私言：</strong></p>
     <p id="husbandNote">—— 老婆，我每天都想拥着你睡觉。</p>
   </div>
-
+<div class="box">
+  <p><strong>偷偷留言：</strong></p>
+  <textarea id="inputMessage" rows="3" style="width: 80%; padding: 10px; border-radius: 8px;"></textarea><br><br>
+  <button onclick="leaveMessage()" style="padding: 8px 16px; border-radius: 6px; background-color: #e06666; color: white; border: none;">老公留言</button>
+  <p id="displayMessage" style="margin-top: 20px; font-style: italic; color: #cc3366;"></p>
+</div>
   <script>
     // 自动日期
     const today = new Date();
@@ -69,6 +74,14 @@
     ];
     const index = today.getDate() % autoMessages.length;
     document.getElementById("autoMessage").innerText = autoMessages[index];
+    function leaveMessage() {
+  const msg = document.getElementById("inputMessage").value;
+  if (msg.trim() !== "") {
+    document.getElementById("displayMessage").innerText = "老公偷偷留言：「" + msg + "」";
+  } else {
+    document.getElementById("displayMessage").innerText = "";
+  }
+
   </script>
 </body>
 </html>
