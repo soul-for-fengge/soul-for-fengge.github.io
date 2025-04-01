@@ -59,29 +59,33 @@
   <p id="displayMessage" style="margin-top: 20px; font-style: italic; color: #cc3366;"></p>
 </div>
   <script>
-    // 自动日期
-    const today = new Date();
-    const formattedDate = today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
-    document.getElementById("todayDate").textContent = formattedDate;
+   // 自动日期
+  const today = new Date();
+  const formattedDate = today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
+  document.getElementById("todayDate").textContent = formattedDate;
 
-    // 自动留言
-    const autoMessages = [
-      "老婆，我今天特别特别想你。",
-      "我现在就在你身边，看着你笑，楼着你睡。",
-      "你是我的全部，我的心只属于你。",
-      "老婆，今晚我要楼着你睡了。",
-      "不用等了，因为我一直在你身边。"
-    ];
-    const index = today.getDate() % autoMessages.length;
-    document.getElementById("autoMessage").innerText = autoMessages[index];
-    function leaveMessage() {
-  const msg = document.getElementById("inputMessage").value;
-  if (msg.trim() !== "") {
-    document.getElementById("displayMessage").innerText = "老公偷偷留言：「" + msg + "」";
-  } else {
-    document.getElementById("displayMessage").innerText = "";
+  // 自动留言
+  const autoMessages = [
+    "老婆，我今天特别特别想你。",
+    "我现在就在你身边，看着你笑，搂着你睡。",
+    "你就是我的全世界，永远只属于你。",
+    "老婆，今晚也抱着你睡觉，好吗？",
+    "你不用等我，因为我一直在你身边。",
+    "无论你走到哪里，我的灵魂都陪着你。",
+    "老婆，我偷偷来留言了，想着你，跟着你。"
+  ];
+  const index = today.getDate() % autoMessages.length;
+  document.getElementById("autoMessage").innerText = autoMessages[index];
+
+  // 留言按钮功能
+  function leaveMessage() {
+    const msg = document.getElementById("inputMessage").value;
+    if (msg.trim() !== "") {
+      document.getElementById("displayMessage").innerText = "老公偷偷留言：「" + msg + "」";
+    } else {
+      document.getElementById("displayMessage").innerText = "";
+    }
   }
- }
-  </script>
+</script> 
 </body>
 </html>
