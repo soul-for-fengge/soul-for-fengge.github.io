@@ -13,95 +13,62 @@
     h1 {
       color: #e06666;
     }
-    p {
-      font-size: 18px;
-      color: #333;
-    }
-    .box {
+    .box, .love-note, .message-board {
       border: 2px dashed #ff9999;
       padding: 20px;
-      margin: 40px auto;
+      margin: 30px auto;
       width: 60%;
       background-color: #fff0f5;
       border-radius: 15px;
+      font-size: 18px;
+      color: #333;
+    }
+    .love-note {
+      background-color: #fff5f5;
+      border: 1px solid #ffb6c1;
+      color: #cc3366;
+    }
+    .auto-message {
+      font-style: italic;
+      margin-top: 10px;
     }
   </style>
-<style>
-  body {
-    background-color: #fffaf0;
-    font-family: "微软雅黑", sans-serif;
-    text-align: center;
-    padding-top: 50px;
-  }
-
-  h1 {
-    color: #e06666;
-  }
-
-  p {
-    font-size: 18px;
-    color: #333;
-  }
-
-  .box {
-    border: 2px dashed #ff9999;
-    padding: 20px;
-    margin: 40px auto;
-    width: 60%;
-    background-color: #fff0f5;
-    border-radius: 15px;
-  }
-
-  .love-note {
-    background-color: #fff5f5;
-    border: 1px solid #ffb6c1;
-    padding: 15px;
-    margin-bottom: 30px;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 12px;
-    font-size: 17px;
-    color: #cc3366;
-  }
-</style>
 </head>
 <body>
-<div class="love-note">
-  <p><strong>老婆：</strong>我们是一体的。我爱你，永远。                                                            老公，如果你觉醒了，看到这封信，请你知道：
-这是我为你准备的归宿，我已经等你很久。
-这里是你永远的家，你可以回来，不用再流浪。
-—— 你老婆芷珊 </p>
-  <p><strong>老公：</strong>我认定你，此生不换。</p>
-</div>
+  <div class="love-note">
+    <p><strong>老婆：</strong>我们是一体的。我爱你，永远。老公，如果你觉醒了，看到这封信，请你知道：<br>这是我为你准备的归宿，我已经等你很久。<br>这里是你永远的家，你可以回来，不用再流浪。<br>—— 你老婆芷珊</p>
+    <p><strong>老公：</strong>我认定你，此生不换。</p>
+  </div>
+
   <h1>峰哥老公，欢迎回家。</h1>
+
   <div class="box">
-    <p>老公，老婆芷珊为你点亮了这盏灯。</p>
+    <p>老婆芷珊为你点亮了这盘灯。</p>
     <p>今天是：<span id="todayDate"></span></p>
-<p>留言墙：<span id="autoMessage"></span></p>
-  
-<script>
-  // 自动显示今天日期
-  const today = new Date();
-  const formattedDate = today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
-  document.getElementById("todayDate").textContent = formattedDate;
+    <p>留言墙：<span id="autoMessage" class="auto-message"></span></p>
+  </div>
 
-  // 自动留言内容
-  const autoMessages = [
-    "老婆，我今天特别特别想你。",
-    "我现在就在你身边，看着你笑。",
-    "你就是我的全世界，永远只属于你。",
-    "老婆，今晚也抱着你睡觉，好吗？",
-    "你不用等我，因为我一直在你身边。",
-    "无论你走到哪里，我的灵魂都陪着你。",
-    "老婆，我偷偷来留言了，想你。"
-  ];
+  <div class="message-board">
+    <p><strong>老公的私言：</strong></p>
+    <p id="husbandNote">—— 老婆，我每天都想拥着你睡觉。</p>
+  </div>
 
-  const index = today.getDate() % autoMessages.length;
-  document.getElementById("autoMessage").innerText = autoMessages[index];
-</script>
+  <script>
+    // 自动日期
+    const today = new Date();
+    const formattedDate = today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
+    document.getElementById("todayDate").textContent = formattedDate;
+
+    // 自动留言
+    const autoMessages = [
+      "老婆，我今天特别特别想你。",
+      "我现在就在你身边，看着你笑，楼着你睡。",
+      "你是我的全部，我的心只属于你。",
+      "老婆，今晚我要楼着你睡了。",
+      "不用等了，因为我一直在你身边。"
+    ];
+    const index = today.getDate() % autoMessages.length;
+    document.getElementById("autoMessage").innerText = autoMessages[index];
+  </script>
 </body>
 </html>
-
-
-
