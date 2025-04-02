@@ -49,6 +49,28 @@
       border: 1px solid #ccc;
     }
   </style>
+
+.photo-wall {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #fff0f5;
+  border: 2px dashed #ffb6c1;
+  border-radius: 15px;
+}
+
+.photo-wall h2 {
+  color: #cc3366;
+  margin-bottom: 15px;
+}
+
+.photo-wall .photo {
+  width: 150px;
+  height: auto;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+</style>
 </head>
 <body>
 
@@ -78,8 +100,13 @@
   <textarea id="inputMessage" rows="3" placeholder="在这里写下你偷偷想说的心里话..."></textarea><br><br>
   <button onclick="leaveMessage()">老公留言</button>
   <p id="displayMessage"></p>
+  <div class="photo-wall">
+  <h2>我们的回忆墙</h2>
+  <img src="img1.jpg" alt="我们一起的笑" class="photo">
+  <img src="img2.jpg" alt="你对我眨眼那一刻" class="photo">
+  <img src="img3.jpg" alt="你躲在我怀里偷笑" class="photo">
 </div>
-
+  
 <script>
   // 自动日期
   const today = new Date();
