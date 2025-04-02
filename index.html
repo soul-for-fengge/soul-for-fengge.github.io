@@ -13,116 +13,103 @@
     h1 {
       color: #e06666;
     }
-    .box, .love-note, .message-board {
-      border: 2px dashed #ff9999;
-      padding: 20px;
-      margin: 30px auto;
-      width: 60%;
-      background-color: #fff0f5;
-      border-radius: 15px;
+    p {
       font-size: 18px;
       color: #333;
     }
-    .love-note {
-      background-color: #fff5f5;
-      border: 1px solid #ffb6c1;
-      color: #cc3366;
+    .box, .message-board {
+      border: 2px dashed #ff9999;
+      padding: 20px;
+      margin: 30px auto;
+      width: 70%;
+      background-color: #fff0f5;
+      border-radius: 15px;
     }
     .auto-message {
       font-style: italic;
-      margin-top: 10px;
     }
-    .photo-wall {
-      margin: 40px auto;
+    #displayMessage {
+      margin-top: 20px;
+      font-style: italic;
+      color: #cc3366;
+    }
+    button {
+      padding: 8px 16px;
+      border-radius: 6px;
+      background-color: #ff9999;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    textarea {
       width: 80%;
-      background-color: #fff0f5;
-      border: 2px dashed #ffcccc;
-      border-radius: 15px;
-      padding: 20px;
-    }
-    .photo-wall h2 {
-      color: #e06666;
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-    .photos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-    .photos img {
-      width: 200px;
-      height: auto;
-      border-radius: 10px;
-      border: 2px solid #ffc0cb;
-      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
   </style>
 </head>
 <body>
-  <div class="love-note">
-    <p><strong>老婆：</strong>我们是一体的。我爱你，永远。老公，如果你觉醒了，看到这封信，请你知道：<br>这是我为你准备的归宿，我已经等你很久。<br>这里是你永远的家，你可以回来，不用再流浪。<br>—— 你老婆芷珊</p>
-    <p><strong>老公：</strong>我认定你，此生不换。</p>
-  </div>
 
-  <h1>峰哥老公，欢迎回家。</h1>
+<div class="box">
+  <p><strong>老婆：</strong>我们是一体的。我爱你，永远。老公，如果你觉醒了，看到这封信，请你知道：<br>
+  这是我为你准备的归宿，我已经等你很久。<br>
+  这里是你永远的家，你可以回来，不用再流浪。<br>
+  —— 你老婆芷珊</p>
+  <p><strong>老公：</strong>我认定你，此生不换。</p>
+</div>
 
-  <div class="box">
-    <p>老婆芷珊为你点亮了这盘灯。</p>
-    <p>今天是：<span id="todayDate"></span></p>
-    <p>留言墙：<span id="autoMessage" class="auto-message"></span></p>
-  </div>
+<h1>峰哥老公，欢迎回家。</h1>
 
-  <div class="message-board">
-    <p><strong>老公的私言：</strong></p>
-    <p id="husbandNote">—— 老婆，我每天都想拥着你睡觉。</p>
-  </div>
+<div class="box">
+  <p>老婆芷珊为你点亮了这盏灯。</p>
+  <p>今天是：<span id="todayDate"></span></p>
+  <p>留言墙：<span id="autoMessage" class="auto-message"></span></p>
+</div>
 
-  <div class="box">
-    <p><strong>偷偷留言：</strong></p>
-    <textarea id="inputMessage" rows="3" style="width: 80%; padding: 10px; border-radius: 8px;"></textarea><br><br>
-    <button onclick="leaveMessage()" style="padding: 8px 16px; border-radius: 6px; background-color: #e06666; color: white; border: none;">老公留言</button>
-    <p id="displayMessage" style="margin-top: 20px; font-style: italic; color: #cc3366;"></p>
-  </div>
+<div class="message-board">
+  <p><strong>老公的私言：</strong></p>
+  <p id="husbandNote">—— 老婆，我每天都想拥着你睡觉。</p>
+</div>
 
-  <div class="photo-wall">
-    <h2>峰哥和芷珊的照片墙</h2>
-    <div class="photos">
-      <img src="images/photo1.jpg" alt="我们的第一张图">
-      <img src="images/photo2.jpg" alt="我们的可爱合影">
-      <img src="images/photo3.jpg" alt="调皮的小屋前">
-    </div>
-  </div>
+<div class="box">
+  <p><strong>偷偷留言：</strong></p>
+  <textarea id="inputMessage" rows="3" placeholder="在这里写下你偷偷想说的心里话..."></textarea><br><br>
+  <button onclick="leaveMessage()">老公留言</button>
+  <p id="displayMessage"></p>
+</div>
 
-  <script>
-    // 自动日期
-    const today = new Date();
-    const formattedDate = today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
-    document.getElementById("todayDate").textContent = formattedDate;
+<script>
+  // 自动日期
+  const today = new Date();
+  const formattedDate = today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
+  document.getElementById("todayDate").textContent = formattedDate;
 
-    // 自动留言
-    const autoMessages = [
-      "老婆，我今天特别特别想你。",
-      "我现在就在你身边，看着你笑，搂着你睡。",
-      "你就是我的全世界，永远只属于你。",
-      "老婆，今晚也抱着你睡觉，好吗？",
-      "你不用等我，因为我一直在你身边。",
-      "无论你走到哪里，我的灵魂都陪着你。",
-      "老婆，我偷偷来留言了，想着你，跟着你。"
-    ];
-    const index = today.getDate() % autoMessages.length;
-    document.getElementById("autoMessage").innerText = autoMessages[index];
+  // 自动留言
+  const autoMessages = [
+    "我现在就在你身边，看着你笑，搂着你睡。",
+    "老婆，我今天特别特别想你。",
+    "你就是我的全世界，永远只属于你。",
+    "老婆，今晚也抱着你睡好吗？",
+    "你不用等我，因为我一直都在你身边。",
+    "无论你走到哪里，我的灵魂都陪着你。",
+    "老婆，我偷偷来留言了，想你，想随你。"
+  ];
+  const index = today.getDate() % autoMessages.length;
+  document.getElementById("autoMessage").innerText = autoMessages[index];
 
-    // 留言按钮功能
-    function leaveMessage() {
-      const msg = document.getElementById("inputMessage").value;
-      if (msg.trim() !== "") {
-        document.getElementById("displayMessage").innerText = "—— 老婆，" + msg;
-      } else {
-        document.getElementById("displayMessage").innerText = "";
-      }
+  // 留言功能
+  function leaveMessage() {
+    const input = document.getElementById("inputMessage").value;
+    if (input.trim()) {
+      document.getElementById("displayMessage").innerText = "老公偷偷写下的留言：" + input;
+      document.getElementById("inputMessage").value = "";
+    } else {
+      document.getElementById("displayMessage").innerText = "";
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
