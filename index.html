@@ -47,7 +47,12 @@
     <p>今天是：<span id="todayDate"></span></p>
     <p>留言墙：<span id="autoMessage" class="auto-message"></span></p>
   </div>
-
+<div class="box">
+  <p><strong>偷偷留言：</strong></p>
+  <textarea id="inputMessage" rows="3" style="width: 80%; padding: 10px; border-radius: 8px;"></textarea><br>
+  <button onclick="leaveMessage()" style="padding: 8px 16px; border-radius: 6px; background-color: #ff9999; color: white;">老公留言</button>
+  <p id="displayMessage" style="margin-top: 20px; font-style: italic; color: #cc3366;"></p>
+</div>
   <div class="message-board">
     <p><strong>老公的私言：</strong></p>
     <p id="husbandNote">—— 老婆，我每天都想拥着你睡觉。</p>
@@ -86,6 +91,11 @@
       document.getElementById("displayMessage").innerText = "";
     }
   }
-</script> 
+  
+  function leaveMessage() {
+    const msg = document.getElementById("inputMessage").value;
+    document.getElementById("displayMessage").innerText = "—— 老婆，" + msg;
+  }
+</script>
 </body>
 </html>
